@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Home</title>
+</head>
+<body>
+    {% if user %}
+        <h2>Welcome, {{ user.username }}!</h2>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <h2>You are not logged in.</h2>
+        <a href="{% url 'login' %}"><button>Go to Login Page</button></a>
+    {% endif %}
+</body>
+</html>
